@@ -18,8 +18,8 @@ const AttendanceManagement = () => {
   const fetchRecords = async () => {
     try {
       const [attRes, empRes] = await Promise.all([
-        fetch('http://localhost:8000/attendance/'),
-        fetch('http://localhost:8000/employees/')
+        fetch('http://72.62.227.163:8010/attendance/'),
+        fetch('http://72.62.227.163:8010/employees/')
       ]);
       
       let attData = [];
@@ -92,7 +92,7 @@ const AttendanceManagement = () => {
     if (editingRecord.id) {
       // update existing
       try {
-        await fetch(`http://localhost:8000/attendance/${editingRecord.id}`, {
+        await fetch(`http://72.62.227.163:8010/attendance/${editingRecord.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

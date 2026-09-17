@@ -36,7 +36,7 @@ const SystemUsers = () => {
 
   const fetchUsers = async () => {
     try {
-      const response = await fetch('http://localhost:8000/system-users/');
+      const response = await fetch('http://72.62.227.163:8010/system-users/');
       if (response.ok) {
         const data = await response.json();
         setUsers(data);
@@ -48,7 +48,7 @@ const SystemUsers = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('http://localhost:8000/roles/');
+      const response = await fetch('http://72.62.227.163:8010/roles/');
       if (response.ok) {
         const data = await response.json();
         setRoles(data);
@@ -71,7 +71,7 @@ const SystemUsers = () => {
     }
 
     try {
-      const url = isEditing ? `http://localhost:8000/system-users/${currentUserId}` : 'http://localhost:8000/system-users/';
+      const url = isEditing ? `http://72.62.227.163:8010/system-users/${currentUserId}` : 'http://72.62.227.163:8010/system-users/';
       const method = isEditing ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -134,7 +134,7 @@ const SystemUsers = () => {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
-        const response = await fetch(`http://localhost:8000/system-users/${id}`, {
+        const response = await fetch(`http://72.62.227.163:8010/system-users/${id}`, {
           method: 'DELETE',
         });
         if (response.ok) {

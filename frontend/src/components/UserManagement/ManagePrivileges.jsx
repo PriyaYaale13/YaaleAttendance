@@ -72,7 +72,7 @@ const ManagePrivileges = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('http://localhost:8000/roles/');
+      const response = await fetch('http://72.62.227.163:8010/roles/');
       if (response.ok) {
         const data = await response.json();
         setRoles(data);
@@ -148,7 +148,7 @@ const ManagePrivileges = () => {
         privileges: privileges
       };
       
-      const response = await fetch(`http://localhost:8000/roles/${selectedRole}`, {
+      const response = await fetch(`http://72.62.227.163:8010/roles/${selectedRole}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

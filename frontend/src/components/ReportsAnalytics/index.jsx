@@ -15,9 +15,9 @@ const ReportsAnalytics = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://localhost:8000/employees/').then(r => r.json()),
-      fetch('http://localhost:8000/attendance/').then(r => r.json()),
-      fetch('http://localhost:8000/overtime/').then(r => r.json())
+      fetch('http://72.62.227.163:8010/employees/').then(r => r.json()),
+      fetch('http://72.62.227.163:8010/attendance/').then(r => r.json()),
+      fetch('http://72.62.227.163:8010/overtime/').then(r => r.json())
     ]).then(([empData, attData, otData]) => {
       setEmployees(empData || []);
       setAttendance(attData || []);

@@ -16,7 +16,7 @@ const EmployeeSelfService = () => {
 
   // Fetch all employees for the dropdown
   useEffect(() => {
-    fetch('http://localhost:8000/employees/')
+    fetch('http://72.62.227.163:8010/employees/')
       .then(res => res.json())
       .then(data => {
         setAllEmployees(data);
@@ -43,8 +43,8 @@ const EmployeeSelfService = () => {
     const fetchData = async () => {
       try {
         const [attRes, payslipRes] = await Promise.all([
-          fetch('http://localhost:8000/attendance/'),
-          fetch('http://localhost:8000/payslips/')
+          fetch('http://72.62.227.163:8010/attendance/'),
+          fetch('http://72.62.227.163:8010/payslips/')
         ]);
 
         if (attRes.ok) {

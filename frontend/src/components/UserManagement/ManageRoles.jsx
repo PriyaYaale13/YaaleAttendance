@@ -15,7 +15,7 @@ const ManageRoles = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('http://localhost:8000/roles/');
+      const response = await fetch('http://72.62.227.163:8010/roles/');
       if (response.ok) {
         const data = await response.json();
         setRoles(data);
@@ -52,7 +52,7 @@ const ManageRoles = () => {
 
     try {
       if (isEditing) {
-        const response = await fetch(`http://localhost:8000/roles/${formData.id}`, {
+        const response = await fetch(`http://72.62.227.163:8010/roles/${formData.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: formData.name.trim() })
@@ -65,7 +65,7 @@ const ManageRoles = () => {
           setErrorMsg(errData.detail || 'Failed to update role');
         }
       } else {
-        const response = await fetch('http://localhost:8000/roles/', {
+        const response = await fetch('http://72.62.227.163:8010/roles/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ name: formData.name.trim() })
@@ -88,7 +88,7 @@ const ManageRoles = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this role?")) return;
     try {
-      const response = await fetch(`http://localhost:8000/roles/${id}`, {
+      const response = await fetch(`http://72.62.227.163:8010/roles/${id}`, {
         method: 'DELETE'
       });
       if (response.ok) {

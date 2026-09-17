@@ -19,7 +19,7 @@ const EarlyDepartureManagement = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await fetch('http://localhost:8000/early-departures/');
+      const response = await fetch('http://72.62.227.163:8010/early-departures/');
       if (response.ok) {
         const data = await response.json();
         setRecords(data);
@@ -47,7 +47,7 @@ const EarlyDepartureManagement = () => {
   const handleEmpIdBlur = async () => {
     if (!formData.empId) return;
     try {
-      const response = await fetch('http://localhost:8000/employees/');
+      const response = await fetch('http://72.62.227.163:8010/employees/');
       if (response.ok) {
         const employees = await response.json();
         const emp = employees.find(e => e.employeeId === formData.empId);
@@ -67,7 +67,7 @@ const EarlyDepartureManagement = () => {
         ...formData,
         date: new Date().toISOString().split('T')[0],
       };
-      const response = await fetch('http://localhost:8000/early-departures/', {
+      const response = await fetch('http://72.62.227.163:8010/early-departures/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

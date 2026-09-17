@@ -56,7 +56,7 @@ const QRAttendance = () => {
 
   const fetchAttendance = async () => {
     try {
-      const response = await fetch('http://localhost:8000/attendance/');
+      const response = await fetch('http://72.62.227.163:8010/attendance/');
       if (response.ok) {
         const data = await response.json();
         setRecords(data);
@@ -77,7 +77,7 @@ const QRAttendance = () => {
     if (!empIdInput) return;
     const empId = empIdInput.trim();
     try {
-      const response = await fetch('http://localhost:8000/attendance/scan/', {
+      const response = await fetch('http://72.62.227.163:8010/attendance/scan/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ employeeId: empId, location: locationInput }),
@@ -130,7 +130,7 @@ const QRAttendance = () => {
         supportingInfo: earlyInfo,
         status: 'Pending'
       };
-      const response = await fetch('http://localhost:8000/early-departures/', {
+      const response = await fetch('http://72.62.227.163:8010/early-departures/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

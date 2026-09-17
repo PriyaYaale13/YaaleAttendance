@@ -28,7 +28,7 @@ const LeaveManagement = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await fetch('http://localhost:8000/leaves/');
+      const response = await fetch('http://72.62.227.163:8010/leaves/');
       if (response.ok) {
         const data = await response.json();
         setRecords(data);
@@ -40,7 +40,7 @@ const LeaveManagement = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('http://localhost:8000/employees/');
+      const response = await fetch('http://72.62.227.163:8010/employees/');
       if (response.ok) {
         const data = await response.json();
         setAllEmployees(data);
@@ -103,7 +103,7 @@ const LeaveManagement = () => {
   const handleSave = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8000/leaves/', {
+      const response = await fetch('http://72.62.227.163:8010/leaves/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData)
@@ -136,7 +136,7 @@ const LeaveManagement = () => {
         payload.rejectionReason = rejectReason;
       }
       
-      const response = await fetch(`http://localhost:8000/leaves/${record.id}`, {
+      const response = await fetch(`http://72.62.227.163:8010/leaves/${record.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

@@ -11,7 +11,7 @@ const PaymentModule = () => {
 
   const fetchPayments = async () => {
     try {
-      const response = await fetch('http://localhost:8000/payslips/');
+      const response = await fetch('http://72.62.227.163:8010/payslips/');
       const data = await response.json();
       const mapped = data.map(ps => ({
         dbId: ps.id,
@@ -71,7 +71,7 @@ const PaymentModule = () => {
         paymentDate: new Date().toISOString().split('T')[0] 
       };
       
-      await fetch(`http://localhost:8000/payslips/${payment.dbId}`, {
+      await fetch(`http://72.62.227.163:8010/payslips/${payment.dbId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedPayslip)

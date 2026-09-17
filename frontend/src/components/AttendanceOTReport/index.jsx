@@ -11,7 +11,7 @@ const AttendanceOTReport = () => {
   React.useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await fetch('http://localhost:8000/attendance/');
+        const response = await fetch('http://72.62.227.163:8010/attendance/');
         if (response.ok) {
           const data = await response.json();
           const reportData = data.map(att => {

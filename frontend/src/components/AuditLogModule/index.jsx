@@ -15,7 +15,7 @@ const AuditLogModule = () => {
 
   const fetchLogs = async () => {
     try {
-      const response = await fetch('http://localhost:8000/audit-logs/');
+      const response = await fetch('http://72.62.227.163:8010/audit-logs/');
       if (response.ok) {
         const data = await response.json();
         // Convert the ISO datetime strings to local format

@@ -32,7 +32,7 @@ const PayslipModule = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('http://localhost:8000/employees/');
+      const response = await fetch('http://72.62.227.163:8010/employees/');
       if (response.ok) {
         const data = await response.json();
         setAllEmployees(data);
@@ -44,7 +44,7 @@ const PayslipModule = () => {
 
   const fetchPayslips = async () => {
     try {
-      const response = await fetch('http://localhost:8000/payslips/');
+      const response = await fetch('http://72.62.227.163:8010/payslips/');
       if (response.ok) {
         const data = await response.json();
         setPayslips(data);
@@ -152,7 +152,7 @@ const PayslipModule = () => {
         paymentMode: generateFormData.paymentMode
       };
       
-      const response = await fetch('http://localhost:8000/payslips/', {
+      const response = await fetch('http://72.62.227.163:8010/payslips/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -169,7 +169,7 @@ const PayslipModule = () => {
 
   const handlePay = async (payslipId) => {
     try {
-      const response = await fetch(`http://localhost:8000/payslips/${payslipId}/status`, {
+      const response = await fetch(`http://72.62.227.163:8010/payslips/${payslipId}/status`, {
         method: 'PUT',
       });
       if (response.ok) {

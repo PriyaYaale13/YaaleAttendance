@@ -21,7 +21,7 @@ const OvertimeManagement = () => {
 
   const fetchRecords = async () => {
     try {
-      const response = await fetch('http://localhost:8000/overtime/');
+      const response = await fetch('http://72.62.227.163:8010/overtime/');
       if (response.ok) {
         const data = await response.json();
         setRecords(data);
@@ -35,7 +35,7 @@ const OvertimeManagement = () => {
     // First sync OT from attendance, then fetch
     const init = async () => {
       try {
-        await fetch('http://localhost:8000/overtime/sync-from-attendance');
+        await fetch('http://72.62.227.163:8010/overtime/sync-from-attendance');
       } catch (err) {
         console.warn('Sync skipped:', err);
       }
@@ -84,7 +84,7 @@ const OvertimeManagement = () => {
         status: reviewForm.status
       };
 
-      const response = await fetch(`http://localhost:8000/overtime/${selectedRecord.id}`, {
+      const response = await fetch(`http://72.62.227.163:8010/overtime/${selectedRecord.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)

@@ -11,7 +11,7 @@ const Login = ({ onLoginSuccess }) => {
     e.preventDefault();
     // Step 1: Try system_users first (bcrypt hashed passwords)
     try {
-      const sysRes = await fetch('http://localhost:8000/system-users/login/', {
+      const sysRes = await fetch('http://72.62.227.163:8010/system-users/login/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userName: username, password: password }),
@@ -33,7 +33,7 @@ const Login = ({ onLoginSuccess }) => {
 
     // Step 2: Fall back to employee table (plain text passwords)
     try {
-      const empRes = await fetch('http://localhost:8000/employees/');
+      const empRes = await fetch('http://72.62.227.163:8010/employees/');
       if (empRes.ok) {
         const employees = await empRes.json();
         const matchedUser = employees.find(emp => emp.username === username && emp.password === password);
