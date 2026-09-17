@@ -1,0 +1,109 @@
+:root {
+  --firo-primary: #1873B9;
+  --firo-accent: #0F5A96;
+  --firo-dark: #0A3558;
+  --firo-bg: #F8FAFC;
+  --firo-card: #FFFFFF;
+  --firo-text: #1E293B;
+  --firo-text-muted: #64748B;
+  --firo-border: #E2E8F0;
+}
+
+body {
+  background-color: var(--firo-bg);
+  color: var(--firo-text);
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom utility classes extending bootstrap */
+.text-firo-primary { color: var(--firo-primary) !important; }
+.bg-firo-primary { background-color: var(--firo-primary) !important; }
+.text-firo-accent { color: var(--firo-accent) !important; }
+.bg-firo-accent { background-color: var(--firo-accent) !important; }
+.text-firo-dark { color: var(--firo-dark) !important; }
+.bg-firo-card { background-color: var(--firo-card) !important; }
+.text-firo-text { color: var(--firo-text) !important; }
+.text-firo-muted { color: var(--firo-text-muted) !important; }
+
+/* Universal Design System Polish for All Modules */
+.card {
+  border-radius: 16px !important;
+  border: 1px solid #f1f5f9 !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Modern Pill Badges */
+.badge.rounded-pill {
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  padding: 4px 10px;
+}
+
+.bg-success-subtle {
+  background-color: #f0fdf4 !important;
+  color: #16a34a !important;
+}
+
+.bg-warning-subtle {
+  background-color: #fefce8 !important;
+  color: #ca8a04 !important;
+}
+
+.bg-danger-subtle {
+  background-color: #fef2f2 !important;
+  color: #dc2626 !important;
+}
+
+.bg-primary-subtle {
+  background-color: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+.bg-purple-subtle {
+  background-color: #faf5ff !important;
+  color: #9333ea !important;
+}
+
+/* Modern Tables */
+.table > :not(caption) > * > * {
+  padding: 0.85rem 1rem;
+}
+
+.table thead th {
+  background-color: #f8fafc !important;
+  color: #64748b !important;
+  font-size: 11.5px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.table tbody tr {
+  transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8fafc !important;
+}
+
+/* Form Inputs & Selects */
+.form-control:focus, .form-select:focus {
+  border-color: #93c5fd !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+}
+
+.btn-primary {
+  background-color: var(--firo-primary) !important;
+  border-color: var(--firo-primary) !important;
+}
+
+.btn-primary:hover {
+  background-color: var(--firo-accent) !important;
+  border-color: var(--firo-accent) !important;
+}
+
+
+
