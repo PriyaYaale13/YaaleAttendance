@@ -18,8 +18,8 @@ const AttendanceManagement = () => {
   const fetchRecords = async () => {
     try {
       const [attRes, empRes] = await Promise.all([
-        fetch('http://72.62.227.163:8010/attendance/'),
-        fetch('http://72.62.227.163:8010/employees/')
+        fetch(`${import.meta.env.VITE_API_URL}/attendance/`),
+        fetch(`${import.meta.env.VITE_API_URL}/employees/`)
       ]);
       
       let attData = [];
@@ -92,7 +92,7 @@ const AttendanceManagement = () => {
     if (editingRecord.id) {
       // update existing
       try {
-        await fetch(`http://72.62.227.163:8010/attendance/${editingRecord.id}`, {
+        await fetch(`${import.meta.env.VITE_API_URL}/attendance/${editingRecord.id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)

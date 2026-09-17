@@ -50,7 +50,7 @@ const ShiftHours = () => {
 
   const fetchShifts = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/shifts/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/shifts/`);
       if (response.ok) {
         const data = await response.json();
         const mappedData = data.map(shift => ({
@@ -133,7 +133,7 @@ const ShiftHours = () => {
   const confirmDeleteShift = async () => {
     if (!shiftToDelete) return;
     try {
-      const response = await fetch(`http://72.62.227.163:8010/shifts/${shiftToDelete}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/shifts/${shiftToDelete}`, {
         method: 'DELETE'
       });
       if (response.ok) {
@@ -168,7 +168,7 @@ const ShiftHours = () => {
         weeklyOffs: formData.weeklyOffs.join(', ')
       };
 
-      const url = isEditing ? `http://72.62.227.163:8010/shifts/${editId}` : 'http://72.62.227.163:8010/shifts/';
+      const url = isEditing ? `${import.meta.env.VITE_API_URL}/shifts/${editId}` : `${import.meta.env.VITE_API_URL}/shifts/`;
       const method = isEditing ? 'PUT' : 'POST';
 
       const response = await fetch(url, {

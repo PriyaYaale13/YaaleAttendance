@@ -54,7 +54,7 @@ const EmployeeManagement = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/roles/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/roles/`);
       if (response.ok) {
         const data = await response.json();
         setRoles(data);
@@ -66,7 +66,7 @@ const EmployeeManagement = () => {
 
   const fetchEmployees = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/employees/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/employees/`);
       if (response.ok) {
         const data = await response.json();
         const mappedData = data.map(emp => ({
@@ -107,7 +107,7 @@ const EmployeeManagement = () => {
 
   const handleToggleStatus = async (id) => {
     try {
-      const response = await fetch(`http://72.62.227.163:8010/employees/${id}/status`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/employees/${id}/status`, {
         method: 'PUT'
       });
       if (response.ok) {
@@ -212,11 +212,11 @@ const EmployeeManagement = () => {
         yearsOfExperience: formData.yearsOfExperience
       };
 
-      let url = 'http://72.62.227.163:8010/employees/';
+      let url = `${import.meta.env.VITE_API_URL}/employees/`;
       let method = 'POST';
 
       if (isEditing) {
-        url = `http://72.62.227.163:8010/employees/${formData.id}`;
+        url = `${import.meta.env.VITE_API_URL}/employees/${formData.id}`;
         method = 'PUT';
       }
 

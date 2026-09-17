@@ -16,9 +16,9 @@ const ApprovalWorkflow = () => {
   const fetchRecords = async () => {
     try {
       const [otRes, leavesRes, earlyRes] = await Promise.all([
-        fetch('http://72.62.227.163:8010/overtime/'),
-        fetch('http://72.62.227.163:8010/leaves/'),
-        fetch('http://72.62.227.163:8010/early-departures/')
+        fetch(`${import.meta.env.VITE_API_URL}/overtime/`),
+        fetch(`${import.meta.env.VITE_API_URL}/leaves/`),
+        fetch(`${import.meta.env.VITE_API_URL}/early-departures/`)
       ]);
 
       const otData = otRes.ok ? await otRes.json() : [];
@@ -126,7 +126,7 @@ const ApprovalWorkflow = () => {
     let payload = { ...selectedReport.originalRecord };
     
       if (selectedReport.type === 'overtime') {
-      url = `http://72.62.227.163:8010/overtime/${selectedReport.id}`;
+      url = `${import.meta.env.VITE_API_URL}/overtime/${selectedReport.id}`;
       let adminApprovedOt = selectedReport.originalRecord.adminApprovedOt;
       let supervisorReviewedOt = selectedReport.originalRecord.supervisorReviewedOt;
       let paidOtHours = selectedReport.originalRecord.paidOtHours;
@@ -151,13 +151,13 @@ const ApprovalWorkflow = () => {
       payload.paidOtHours = paidOtHours;
 
     } else if (selectedReport.type === 'leave') {
-      url = `http://72.62.227.163:8010/leaves/${selectedReport.id}`;
+      url = `${import.meta.env.VITE_API_URL}/leaves/${selectedReport.id}`;
       if (actionType === 'approve') newDbStatus = 'Approved';
       else newDbStatus = 'Rejected';
       payload.status = newDbStatus;
 
     } else if (selectedReport.type === 'early_departure') {
-      url = `http://72.62.227.163:8010/early-departures/${selectedReport.id}`;
+      url = `${import.meta.env.VITE_API_URL}/early-departures/${selectedReport.id}`;
       if (actionType === 'approve') newDbStatus = 'Approved';
       else newDbStatus = 'Rejected';
       payload.status = newDbStatus;

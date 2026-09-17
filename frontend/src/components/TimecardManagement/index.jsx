@@ -22,7 +22,7 @@ const TimecardManagement = () => {
 
   const fetchTimecards = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/timecards/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/timecards/`);
       if (response.ok) {
         const data = await response.json();
         setTimecards(data);
@@ -88,7 +88,7 @@ const TimecardManagement = () => {
   const lookupEmployee = async () => {
     if (!formData.employeeId) return;
     try {
-      const res = await fetch('http://72.62.227.163:8010/employees/');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/employees/`);
       if (res.ok) {
         const emps = await res.json();
         const emp = emps.find(e => e.employeeId === formData.employeeId);
@@ -103,7 +103,7 @@ const TimecardManagement = () => {
 
           let presentDays = 0;
           try {
-            const attRes = await fetch('http://72.62.227.163:8010/attendance/');
+            const attRes = await fetch(`${import.meta.env.VITE_API_URL}/attendance/`);
             if (attRes.ok) {
               const attData = await attRes.json();
               const empAtt = attData.filter(a => 
@@ -149,7 +149,7 @@ const TimecardManagement = () => {
       payload.append('timecardDate', formData.timecardDate);
       payload.append('file', formData.file);
 
-      const response = await fetch('http://72.62.227.163:8010/timecards/', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/timecards/`, {
         method: 'POST',
         body: payload
       });
@@ -168,17 +168,17 @@ const TimecardManagement = () => {
   };
 
   const handleDownload = (tc) => {
-    window.open(`http://72.62.227.163:8010/timecards/download/${tc.id}`, '_blank');
+    window.open(`${import.meta.env.VITE_API_URL}/timecards/download/${tc.id}`, '_blank');
   };
 
   const handleView = (tc) => {
-    window.open(`http://72.62.227.163:8010/timecards/view/${tc.id}`, '_blank');
+    window.open(`${import.meta.env.VITE_API_URL}/timecards/view/${tc.id}`, '_blank');
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this timecard?')) {
       try {
-        const response = await fetch(`http://72.62.227.163:8010/timecards/${id}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/timecards/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {

@@ -11,7 +11,7 @@ const AttendanceOTReport = () => {
   React.useEffect(() => {
     const fetchRecords = async () => {
       try {
-        const response = await fetch('http://72.62.227.163:8010/attendance/');
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/attendance/`);
         if (response.ok) {
           const data = await response.json();
           const reportData = data.map(att => {

@@ -15,9 +15,9 @@ const ReportsAnalytics = () => {
 
   useEffect(() => {
     Promise.all([
-      fetch('http://72.62.227.163:8010/employees/').then(r => r.json()),
-      fetch('http://72.62.227.163:8010/attendance/').then(r => r.json()),
-      fetch('http://72.62.227.163:8010/overtime/').then(r => r.json())
+      fetch(`${import.meta.env.VITE_API_URL}/employees/`).then(r => r.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/attendance/`).then(r => r.json()),
+      fetch(`${import.meta.env.VITE_API_URL}/overtime/`).then(r => r.json())
     ]).then(([empData, attData, otData]) => {
       setEmployees(empData || []);
       setAttendance(attData || []);

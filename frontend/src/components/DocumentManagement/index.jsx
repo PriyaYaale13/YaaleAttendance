@@ -29,7 +29,7 @@ const DocumentManagement = () => {
 
   const fetchDocuments = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/employee-documents/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/employee-documents/`);
       if (response.ok) {
         const data = await response.json();
         setDocuments(data);
@@ -78,7 +78,7 @@ const DocumentManagement = () => {
     if (!formData.employeeId) return;
     try {
       // Find employee from all employees to get name
-      const res = await fetch('http://72.62.227.163:8010/employees/');
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/employees/`);
       if (res.ok) {
         const emps = await res.json();
         const emp = emps.find(e => e.employeeId === formData.employeeId);
@@ -112,7 +112,7 @@ const DocumentManagement = () => {
       }
       payload.append('file', formData.file);
 
-      const response = await fetch('http://72.62.227.163:8010/employee-documents/', {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/employee-documents/`, {
         method: 'POST',
         body: payload
       });
@@ -131,13 +131,13 @@ const DocumentManagement = () => {
   };
 
   const handleDownload = (doc) => {
-    window.open(`http://72.62.227.163:8010/employee-documents/download/${doc.id}`, '_blank');
+    window.open(`${import.meta.env.VITE_API_URL}/employee-documents/download/${doc.id}`, '_blank');
   };
 
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this document?')) {
       try {
-        const response = await fetch(`http://72.62.227.163:8010/employee-documents/${id}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/employee-documents/${id}`, {
           method: 'DELETE'
         });
         if (response.ok) {

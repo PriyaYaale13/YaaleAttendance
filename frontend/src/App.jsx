@@ -55,7 +55,7 @@ function App() {
   React.useEffect(() => {
     if (user && user.role) {
       // Fetch role privileges
-      fetch('http://72.62.227.163:8010/roles/')
+      fetch(`${import.meta.env.VITE_API_URL}/roles/`)
         .then(res => res.json())
         .then(roles => {
           const matchedRole = roles.find(r => r.name.toLowerCase() === user.role.toLowerCase());

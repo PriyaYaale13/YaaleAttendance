@@ -72,7 +72,7 @@ const ManagePrivileges = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/roles/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/roles/`);
       if (response.ok) {
         const data = await response.json();
         setRoles(data);
@@ -148,7 +148,7 @@ const ManagePrivileges = () => {
         privileges: privileges
       };
       
-      const response = await fetch(`http://72.62.227.163:8010/roles/${selectedRole}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/roles/${selectedRole}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'

@@ -27,7 +27,7 @@ const CustomerSiteManagement = () => {
 
   const fetchSites = async () => {
     try {
-      const response = await fetch('http://72.62.227.163:8010/customer-sites/');
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/customer-sites/`);
       if (response.ok) {
         const data = await response.json();
         setSites(data);
@@ -85,7 +85,7 @@ const CustomerSiteManagement = () => {
   const handleDelete = async (id) => {
     if(window.confirm('Are you sure you want to delete this site?')) {
       try {
-        const response = await fetch(`http://72.62.227.163:8010/customer-sites/${id}`, {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/customer-sites/${id}`, {
           method: 'DELETE'
         });
         if(response.ok) {
@@ -116,11 +116,11 @@ const CustomerSiteManagement = () => {
         siteStatus: formData.siteStatus
       };
 
-      let url = 'http://72.62.227.163:8010/customer-sites/';
+      let url = `${import.meta.env.VITE_API_URL}/customer-sites/`;
       let method = 'POST';
 
       if (isEditing) {
-        url = `http://72.62.227.163:8010/customer-sites/${formData.id}`;
+        url = `${import.meta.env.VITE_API_URL}/customer-sites/${formData.id}`;
         method = 'PUT';
       }
 

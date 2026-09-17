@@ -34,10 +34,10 @@ const Dashboard = () => {
     const fetchData = async () => {
       try {
         const [empRes, attRes, otRes, leaveRes] = await Promise.all([
-          fetch('http://72.62.227.163:8010/employees/').catch(() => ({ ok: false })),
-          fetch('http://72.62.227.163:8010/attendance/').catch(() => ({ ok: false })),
-          fetch('http://72.62.227.163:8010/overtime/').catch(() => ({ ok: false })),
-          fetch('http://72.62.227.163:8010/leaves/').catch(() => ({ ok: false }))
+          fetch(`${import.meta.env.VITE_API_URL}/employees/`).catch(() => ({ ok: false })),
+          fetch(`${import.meta.env.VITE_API_URL}/attendance/`).catch(() => ({ ok: false })),
+          fetch(`${import.meta.env.VITE_API_URL}/overtime/`).catch(() => ({ ok: false })),
+          fetch(`${import.meta.env.VITE_API_URL}/leaves/`).catch(() => ({ ok: false }))
         ]);
 
         let emps = [], atts = [], ots = [], leaves = [];
