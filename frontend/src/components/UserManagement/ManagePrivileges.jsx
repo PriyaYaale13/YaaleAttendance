@@ -7,6 +7,7 @@ const ManagePrivileges = () => {
   const [selectedRole, setSelectedRole] = useState('');
   const [privileges, setPrivileges] = useState({});
   const [isLoading, setIsLoading] = useState(false);
+  const [notification, setNotification] = useState({ show: false, message: '', type: '' });
 
   // Group definitions for modules
   const privilegeGroups = [
@@ -158,14 +159,17 @@ const ManagePrivileges = () => {
       });
       
       if (response.ok) {
-        alert('Privileges saved successfully for the selected role!');
+        setNotification({ show: true, message: 'Privileges saved successfully for the selected role!', type: 'success' });
+        setTimeout(() => setNotification({ show: false, message: '', type: '' }), 3000);
         fetchRoles(); // Refresh to get the latest saved data
       } else {
-        alert('Failed to save privileges.');
+        setNotification({ show: true, message: 'Failed to save privileges.', type: 'danger' });
+        setTimeout(() => setNotification({ show: false, message: '', type: '' }), 3000);
       }
     } catch (err) {
       console.error('Error saving privileges:', err);
-      alert('Error saving privileges.');
+      setNotification({ show: true, message: 'Error saving privileges.', type: 'danger' });
+      setTimeout(() => setNotification({ show: false, message: '', type: '' }), 3000);
     } finally {
       setIsLoading(false);
     }
@@ -173,6 +177,14 @@ const ManagePrivileges = () => {
 
   return (
     <div className="container-fluid py-4 h-100 overflow-auto position-relative bg-white">
+      {notification.show && (
+        <div className={`alert alert-${notification.type} alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-4 shadow-sm d-flex align-items-center gap-2`} role="alert" style={{ zIndex: 1050, minWidth: '350px' }}>
+          {notification.type === 'success' ? <Check size={20} /> : <X size={20} />}
+          <strong className="me-auto">{notification.message}</strong>
+          <button type="button" className="btn-close position-relative p-0 m-0 ms-3" onClick={() => setNotification({ show: false, message: '', type: '' })}></button>
+        </div>
+      )}
+
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
         <div>
           <h1 className="h3 fw-bold text-dark m-0 mb-1">Manage Privileges</h1>
