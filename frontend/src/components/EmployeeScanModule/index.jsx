@@ -88,12 +88,32 @@ const EmployeeScanModule = () => {
     };
   }, [showScanner, locationInput, user]);
 
-  const fetchLocation = () => {
+  const fetchLocation = async () => {
+    setIsLoadingLocation(true);
+
+    const fallbackToIP = async () => {
+      try {
+        const res = await fetch('https://freeipapi.com/api/json');
+        if (res.ok) {
+          const data = await res.json();
+          setLocationInput(data.cityName || data.regionName || "Unknown Area");
+          setScanMessage({ type: 'info', text: 'Using network location since precise GPS requires HTTPS.' });
+        } else {
+          throw new Error('IP fetch failed');
+        }
+      } catch (err) {
+        setScanMessage({ type: 'error', text: 'Unable to retrieve your location. Browser GPS requires HTTPS.' });
+      } finally {
+        setIsLoadingLocation(false);
+        setTimeout(() => setScanMessage(null), 6000);
+      }
+    };
+
     if (!navigator.geolocation) {
-      setScanMessage({ type: 'error', text: 'Geolocation is not supported by your browser.' });
+      await fallbackToIP();
       return;
     }
-    setIsLoadingLocation(true);
+
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         const { latitude, longitude } = position.coords;
@@ -112,10 +132,10 @@ const EmployeeScanModule = () => {
         setIsLoadingLocation(false);
       },
       (error) => {
-        setIsLoadingLocation(false);
-        setScanMessage({ type: 'error', text: 'Unable to retrieve your location. Please check browser permissions.' });
-        setTimeout(() => setScanMessage(null), 5000);
-      }
+        // If the user denied permission or browser blocked it due to HTTP, fallback to IP
+        fallbackToIP();
+      },
+      { timeout: 10000 }
     );
   };
 
