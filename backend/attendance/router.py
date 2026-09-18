@@ -27,11 +27,11 @@ def scan_attendance(scan: schemas.AttendanceScan, db: Session = Depends(get_db))
     
     att = db.query(models.Attendance).filter(models.Attendance.employee_id == scan.employeeId, models.Attendance.date == today_str).first()
     if not att:
-        # Check-in time validation (8:00 AM to 5:00 PM)
-        if now_time.hour >= 17:
-            raise HTTPException(status_code=400, detail='Your working time ended')
-        if now_time.hour < 8:
-            raise HTTPException(status_code=400, detail='Check-in is only available from 8:00 AM')
+        # Check-in time validation (Temporarily disabled for testing)
+        # if now_time.hour >= 17:
+        #     raise HTTPException(status_code=400, detail='Your working time ended')
+        # if now_time.hour < 8:
+        #     raise HTTPException(status_code=400, detail='Check-in is only available from 8:00 AM')
             
         new_att = models.Attendance(employee_id=scan.employeeId, date=today_str, in_time=time_str, out_time=None, location=scan.location)
         create_audit_log(db, "System User", "Created Record: Scan Attendance", "Attendance", "Unknown", "-", "-", "Action performed via API", "info")
