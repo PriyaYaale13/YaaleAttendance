@@ -38,7 +38,7 @@ const ManagePrivileges = () => {
     {
       group: 'ATTENDANCE & TIME',
       modules: [
-        { name: 'QR Attendance', actions: ['View', 'Export'] },
+        { name: 'QR Attendance', actions: ['View', 'QR Code', 'Table View', 'Export'] },
         { name: 'Shift & Hours', actions: ['View', 'Add', 'Edit', 'Delete'] },
         { name: 'Attendance Management', actions: ['View', 'Edit', 'Export', 'Approve'] },
         { name: 'Early Departure Management', actions: ['View', 'Edit', 'Approve'] },

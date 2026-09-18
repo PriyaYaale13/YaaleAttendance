@@ -1,11 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { QrCode, Clock, X, Check, Camera } from 'lucide-react';
 import { createPortal } from 'react-dom';
 import classNames from 'classnames';
 import { QRCodeSVG } from 'qrcode.react';
 import { Html5QrcodeScanner } from 'html5-qrcode';
+import { AuthContext } from '../../context/AuthContext';
 
 const QRAttendance = () => {
+  const { privileges } = useContext(AuthContext) || { privileges: {} };
+  const canViewQRCode = !!privileges['QR Attendance_QR Code'];
+  const canViewTable = !!privileges['QR Attendance_Table View'];
+
   const [empIdInput, setEmpIdInput] = useState('');
   const [locationInput, setLocationInput] = useState('');
   const [records, setRecords] = useState([]);
@@ -158,6 +163,7 @@ const QRAttendance = () => {
       </div>
 
       <div className="row g-4 mb-4">
+        {canViewQRCode && (
         <div className="col-12">
           <div className="card border-0 rounded-4 shadow-sm h-100">
             <div className="card-body p-4 d-flex flex-column align-items-center justify-content-center text-center">
@@ -215,7 +221,9 @@ const QRAttendance = () => {
             </div>
           </div>
         </div>
+        )}
 
+        {canViewTable && (
         <div className="col-12">
           <div className="card border-0 rounded-4 shadow-sm h-100">
             <div className="card-body p-0">
@@ -292,6 +300,7 @@ const QRAttendance = () => {
             </div>
           </div>
         </div>
+        )}
       </div>
 
       {showEarlyModal && createPortal(
