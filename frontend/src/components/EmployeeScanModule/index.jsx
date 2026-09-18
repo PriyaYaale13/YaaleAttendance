@@ -206,12 +206,18 @@ const EmployeeScanModule = () => {
 
               {!showScanner ? (
                 <div className="d-flex flex-column gap-3 w-100 mb-3">
-                  <button 
-                    className="btn btn-primary bg-firo-primary w-100 py-3 rounded-3 fw-bold shadow-sm d-flex justify-content-center align-items-center gap-2"
-                    onClick={() => setShowScanner(true)}
-                  >
-                    <Camera size={20} /> Start Camera Scanner
-                  </button>
+                  {window.isSecureContext ? (
+                    <button 
+                      className="btn btn-primary bg-firo-primary w-100 py-3 rounded-3 fw-bold shadow-sm d-flex justify-content-center align-items-center gap-2"
+                      onClick={() => setShowScanner(true)}
+                    >
+                      <Camera size={20} /> Start Camera Scanner
+                    </button>
+                  ) : (
+                    <div className="alert alert-warning mb-0 border-0 rounded-3 text-start small">
+                      <strong>Camera Unavailable:</strong> Your browser blocked camera access because this server is not using HTTPS. Please use the Upload button below instead.
+                    </div>
+                  )}
                   
                   <div className="position-relative w-100">
                     <hr className="text-muted" />
