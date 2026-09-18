@@ -30,6 +30,7 @@ const ManagePrivileges = () => {
       modules: [
         { name: 'Employee Management', actions: ['View', 'Add', 'Edit', 'Delete', 'Export'] },
         { name: 'Employee Document Management', actions: ['View', 'Add', 'Edit', 'Delete'] },
+        { name: 'Employee Scan Module', actions: ['View'] },
         { name: 'Customer Site Management', actions: ['View', 'Add', 'Edit', 'Delete'] },
         { name: 'Team', actions: ['View', 'Add', 'Edit', 'Delete'] }
       ]

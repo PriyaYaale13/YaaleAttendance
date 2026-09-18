@@ -5,7 +5,7 @@ const Login = ({ onLoginSuccess }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [isError404, setIsError404] = useState(false);
+  const [isError401, setIsError401] = useState(false);
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -46,17 +46,17 @@ const Login = ({ onLoginSuccess }) => {
       console.error('Employee login error', err);
     }
 
-    setIsError404(true);
+    setIsError401(true);
   };
 
-  if (isError404) {
+  if (isError401) {
     return (
       <div className="d-flex align-items-center justify-content-center w-100 vh-100 bg-firo-bg">
         <div className="card border-0 shadow-sm rounded-4 p-5 text-center d-flex flex-column align-items-center" style={{ maxWidth: '450px' }}>
           <div className="mb-4 bg-danger bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center text-danger" style={{ width: '100px', height: '100px' }}>
             <ThumbsDown size={50} strokeWidth={1.5} />
           </div>
-          <h1 className="display-4 fw-bold text-firo-dark mb-2">404</h1>
+          <h1 className="display-4 fw-bold text-firo-dark mb-2">401</h1>
           <h3 className="h5 fw-bold text-firo-dark mb-3">Authentication Failed</h3>
           <p className="text-firo-muted mb-4">
             The username and password you entered are wrong. We could not find a matching account in our system.
@@ -64,7 +64,7 @@ const Login = ({ onLoginSuccess }) => {
           <button 
             className="btn btn-primary bg-firo-primary border-0 rounded-pill px-5 py-2 fw-medium shadow-sm"
             onClick={() => {
-              setIsError404(false);
+              setIsError401(false);
               setPassword('');
             }}
           >

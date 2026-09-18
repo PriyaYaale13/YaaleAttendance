@@ -23,4 +23,5 @@ export { default as EarlyDepartureManagement } from './EarlyDepartureManagement'
 export { default as LeaveManagement } from './LeaveManagement';
 export { default as CustomerSiteManagement } from './CustomerSiteManagement';
 export { default as DocumentManagement } from './DocumentManagement';
+export { default as EmployeeScanModule } from './EmployeeScanModule';
 export { default as TimecardManagement } from './TimecardManagement';

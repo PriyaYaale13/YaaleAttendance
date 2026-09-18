@@ -65,6 +65,7 @@ const Sidebar = ({ isOpen, isMobile, onClose, onToggleCollapse, isCollapsed, act
         { name: 'Employee Document Management' }
       ]
     },
+    { name: 'Employee Scan Module', icon: QrCode },
     { name: 'Customer Site Management', icon: MapPin },
     { name: 'QR Attendance', icon: QrCode },
     { name: 'Shift & Hours', icon: Clock },

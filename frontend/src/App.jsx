@@ -25,7 +25,8 @@ import {
   LeaveManagement,
   CustomerSiteManagement,
   DocumentManagement,
-  TimecardManagement
+  TimecardManagement,
+  EmployeeScanModule
 } from './components';
 
 import { AuthContext } from './context/AuthContext';
@@ -97,6 +98,7 @@ function App() {
       case '* Locations': return <ManageLocations />;
       case 'Employee Management': return <EmployeeManagement />;
       case 'Employee Document Management': return <DocumentManagement />;
+      case 'Employee Scan Module': return <EmployeeScanModule />;
       case 'Customer Site Management': return <CustomerSiteManagement />;
       case 'QR Attendance': return <QRAttendance />;
       case 'Shift & Hours': return <ShiftHours />;
